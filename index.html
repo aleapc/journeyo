@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kit de Bordo — The language of your trip</title>
+<title>Journeyo — The language of your trip</title>
 <meta name="description" content="A survival language course for your actual destination — in the order a trip really happens: arrival, everyday life, blending in." />
 <style>
   :root {
@@ -22,9 +22,14 @@
     color: var(--carvao);
     line-height: 1.5;
   }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
   header {
-    padding: 20px 0 0;
+    padding: 18px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
   }
   .brand {
     display: flex;
@@ -42,109 +47,57 @@
     color: white;
     font-size: 1.1rem;
   }
-  .hero {
-    padding: 56px 0 40px;
-    text-align: center;
+  select#langSwitch {
+    font-family: inherit;
+    font-size: .82rem;
+    font-weight: 700;
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(43,43,43,.15);
+    background: white;
+    color: var(--carvao);
   }
+
+  .hero { padding: 44px 0 36px; text-align: center; }
   .hero h1 {
-    font-size: clamp(1.8rem, 4.5vw, 2.9rem);
+    font-size: clamp(1.7rem, 4.5vw, 2.8rem);
     font-weight: 850;
     line-height: 1.15;
     margin: 0 0 14px;
     letter-spacing: -0.01em;
   }
   .hero p.subhead {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 2vw, 1.15rem);
     color: rgba(43,43,43,.72);
-    max-width: 560px;
-    margin: 0 auto 26px;
+    max-width: 580px;
+    margin: 0 auto 24px;
   }
   .cta {
-    display: inline-flex;
-    gap: 10px;
-    align-items: center;
-    background: var(--carvao);
-    color: white;
-    font-weight: 700;
-    padding: 13px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: .95rem;
+    display: inline-flex; gap: 10px; align-items: center;
+    background: var(--carvao); color: white; font-weight: 700;
+    padding: 13px 22px; border-radius: 999px; text-decoration: none; font-size: .95rem;
     transition: transform .15s ease;
   }
   .cta:hover { transform: translateY(-1px); }
-  .cta-sub {
-    margin-top: 10px;
-    font-size: .8rem;
-    color: rgba(43,43,43,.5);
-  }
+  .cta-sub { margin-top: 10px; font-size: .8rem; color: rgba(43,43,43,.5); }
 
-  section { padding: 44px 0; }
+  section { padding: 40px 0; }
   .section-kicker {
-    font-size: .72rem;
-    font-weight: 800;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--terracota);
-    margin: 0 0 8px;
+    font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--terracota); margin: 0 0 8px;
   }
-  h2 {
-    font-size: clamp(1.4rem, 3vw, 1.9rem);
-    font-weight: 800;
-    margin: 0 0 8px;
-    letter-spacing: -0.01em;
-  }
-  .section-lede {
-    color: rgba(43,43,43,.68);
-    max-width: 620px;
-    margin: 0 0 28px;
-  }
+  h2 { font-size: clamp(1.35rem, 3vw, 1.85rem); font-weight: 800; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .section-lede { color: rgba(43,43,43,.68); max-width: 640px; margin: 0 0 26px; }
 
-  /* Why it's different — proof cards */
-  .proof-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-  }
-  .proof-card {
-    background: white;
-    border-radius: 18px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.05);
-  }
+  .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .proof-card { background: white; border-radius: 18px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
   .proof-card .flag { font-size: 1.6rem; margin-bottom: 10px; display: block; }
-  .proof-card .place {
-    font-size: .72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    color: var(--oceano);
-    margin: 0 0 6px;
-  }
-  .proof-card p.fact {
-    font-size: .93rem;
-    color: rgba(43,43,43,.85);
-    margin: 0;
-  }
-  .proof-card .tag {
-    display: inline-block;
-    margin-top: 12px;
-    font-size: .74rem;
-    font-weight: 700;
-    color: var(--terracota);
-  }
+  .proof-card .place { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--oceano); margin: 0 0 6px; }
+  .proof-card p.fact { font-size: .93rem; color: rgba(43,43,43,.85); margin: 0; }
+  .proof-card .tag { display: inline-block; margin-top: 12px; font-size: .74rem; font-weight: 700; color: var(--terracota); }
 
-  /* Compare strip */
-  .compare {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 30px;
-  }
-  .compare .col {
-    border-radius: 16px;
-    padding: 18px 20px;
-  }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+  .compare .col { border-radius: 16px; padding: 18px 20px; }
   .compare .col.them { background: rgba(43,43,43,.05); }
   .compare .col.us { background: var(--carvao); color: white; }
   .compare h3 { margin: 0 0 10px; font-size: .95rem; font-weight: 800; }
@@ -155,18 +108,9 @@
   .compare .col.us p { color: rgba(255,255,255,.85); }
   @media (max-width: 560px) { .compare { grid-template-columns: 1fr; } }
 
-  /* How it works — 3 phases */
-  .phase-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
+  .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   @media (max-width: 720px) { .phase-grid { grid-template-columns: 1fr; } }
-  .phase-card {
-    border-radius: 18px;
-    padding: 22px 20px;
-    color: white;
-  }
+  .phase-card { border-radius: 18px; padding: 22px 20px; color: white; }
   .phase-card.p1 { background: linear-gradient(155deg, #E0915A, #B23A22); }
   .phase-card.p2 { background: linear-gradient(155deg, #8FB89B, #5E8870); }
   .phase-card.p3 { background: linear-gradient(155deg, #3E8DA0, #244F5C); }
@@ -175,248 +119,285 @@
   .phase-card h3 { margin: 6px 0 8px; font-size: 1.15rem; font-weight: 800; }
   .phase-card p { margin: 0; font-size: .88rem; opacity: .92; }
 
-  /* Destinations */
-  .dest-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 14px;
-  }
+  /* Destinations — cards with real photo + expandable second layer */
+  .dest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 16px; }
   .dest-card {
-    background: white;
-    border-radius: 16px;
-    padding: 18px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+    background: white; border-radius: 18px; overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
   }
-  .dest-card .head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
+  .dest-photo {
+    position: relative; height: 140px; background-size: cover; background-position: center;
   }
-  .dest-card .flag { font-size: 1.7rem; }
-  .dest-card h3 { margin: 0; font-size: 1.05rem; font-weight: 800; }
-  .dest-card .sub { font-size: .74rem; color: rgba(43,43,43,.5); margin-top: 1px; }
+  .dest-photo::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,.05) 55%);
+  }
+  .dest-photo .name {
+    position: absolute; left: 14px; bottom: 10px; z-index: 1;
+    color: white; font-weight: 800; font-size: 1.1rem; text-shadow: 0 1px 4px rgba(0,0,0,.3);
+  }
+  .dest-photo .flag { position: absolute; right: 12px; top: 10px; font-size: 1.4rem; z-index: 1; }
+  .dest-body { padding: 14px 16px 16px; }
+  .dest-desc { font-size: .82rem; color: rgba(43,43,43,.6); margin: 0 0 10px; }
+  .try-hint { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: var(--terracota); margin: 0 0 8px; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
   .chip {
-    font-size: .76rem;
-    font-weight: 700;
-    padding: 5px 10px;
-    border-radius: 999px;
-    background: var(--creme);
-    color: var(--carvao);
-    text-decoration: none;
-    border: 1px solid rgba(43,43,43,.1);
-    transition: background .15s ease, transform .15s ease;
+    font-size: .76rem; font-weight: 700; padding: 5px 10px; border-radius: 999px;
+    background: var(--creme); color: var(--carvao); text-decoration: none;
+    border: 1px solid rgba(43,43,43,.1); transition: background .15s ease, transform .15s ease;
   }
   .chip:hover { background: var(--sol); transform: translateY(-1px); }
-  .chip.soon {
-    background: transparent;
-    color: rgba(43,43,43,.4);
-    border-style: dashed;
-    cursor: default;
-  }
-  .chip.soon:hover { background: transparent; transform: none; }
 
-  footer {
-    padding: 40px 0 60px;
-    text-align: center;
-    color: rgba(43,43,43,.5);
-    font-size: .82rem;
+  /* Coming soon */
+  .soon-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 14px; }
+  .soon-card {
+    border-radius: 16px; padding: 16px 18px;
+    background: repeating-linear-gradient(135deg, rgba(43,43,43,.04) 0 10px, transparent 10px 20px);
+    border: 1.5px dashed rgba(43,43,43,.25);
   }
-  footer .promise {
-    font-weight: 700;
-    color: var(--carvao);
-    margin-bottom: 6px;
+  .soon-card .flag { font-size: 1.5rem; display: block; margin-bottom: 8px; }
+  .soon-card h4 { margin: 0 0 4px; font-size: .95rem; font-weight: 800; }
+  .soon-card p { margin: 0; font-size: .8rem; color: rgba(43,43,43,.6); }
+  .soon-badge {
+    display: inline-block; margin-top: 8px; font-size: .68rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .05em; color: var(--oceano);
   }
+
+  footer { padding: 36px 0 56px; text-align: center; color: rgba(43,43,43,.5); font-size: .82rem; }
+  footer .promise { font-weight: 700; color: var(--carvao); margin-bottom: 6px; }
 </style>
 </head>
 <body>
 
 <header class="wrap">
-  <div class="brand"><span class="mark">🧭</span> Kit de Bordo</div>
+  <div class="brand"><span class="mark">🧭</span> Journeyo</div>
+  <select id="langSwitch" aria-label="Language"></select>
 </header>
 
 <section class="hero wrap">
-  <h1>The language of your trip,<br />in the order you'll actually need it.</h1>
-  <p class="subhead">From the airport counter to the last toast of the night — a survival course built around one destination at a time, not a language in the abstract.</p>
-  <a class="cta" href="#destinos">See your destination ↓</a>
-  <div class="cta-sub">36 short lessons per destination · no subscription · works offline</div>
+  <h1 data-i18n="hero_h1">The language of your trip,<br />in the order you'll actually need it.</h1>
+  <p class="subhead" data-i18n="hero_sub">From the airport counter to the last toast of the night — a survival course built around one destination at a time, not a language in the abstract.</p>
+  <a class="cta" href="#destinos" data-i18n="hero_cta">See your destination ↓</a>
+  <div class="cta-sub" data-i18n="hero_ctasub">36 short lessons per destination · no subscription · works offline</div>
 </section>
 
 <section class="wrap">
-  <p class="section-kicker">Why not just Duolingo</p>
-  <h2>Every app teaches you to say hello.</h2>
-  <p class="section-lede">Almost none of them teach you the one thing that actually gets you into trouble: the local rule nobody explains until you've already broken it. These are three real examples — the kind of thing this course teaches, not the kind we made up to sound clever.</p>
+  <p class="section-kicker" data-i18n="proof_kicker">Why not just Duolingo</p>
+  <h2 data-i18n="proof_h2">Every app teaches you to say hello.</h2>
+  <p class="section-lede" data-i18n="proof_lede">Almost none of them teach you the one thing that actually gets you into trouble: the local rule nobody explains until you've already broken it. Three real examples — the kind of thing this course teaches, not the kind we made up to sound clever.</p>
 
   <div class="proof-grid">
     <div class="proof-card">
       <span class="flag">🇮🇹</span>
-      <p class="place">Italy</p>
-      <p class="fact">Bars are legally allowed to charge two different prices for the same coffee — one standing at the counter, one sitting at a table. The difference is often double.</p>
-      <span class="tag">→ how to ask before you sit</span>
+      <p class="place" data-i18n="proof_it_place">Italy</p>
+      <p class="fact" data-i18n="proof_it_fact">Bars are legally allowed to charge two different prices for the same coffee — one standing at the counter, one sitting at a table. The difference is often double.</p>
+      <span class="tag" data-i18n="proof_it_tag">→ how to ask before you sit</span>
     </div>
     <div class="proof-card">
       <span class="flag">🇯🇵</span>
-      <p class="place">Japan</p>
-      <p class="fact">Tipping isn't just unnecessary in Japan — trying to leave one can confuse or mildly offend. Good service is already built into the price.</p>
-      <span class="tag">→ what to say instead of a tip</span>
+      <p class="place" data-i18n="proof_jp_place">Japan</p>
+      <p class="fact" data-i18n="proof_jp_fact">Tipping isn't just unnecessary in Japan — trying to leave one can confuse or mildly offend. Good service is already built into the price.</p>
+      <span class="tag" data-i18n="proof_jp_tag">→ what to say instead of a tip</span>
     </div>
     <div class="proof-card">
       <span class="flag">🇹🇷</span>
-      <p class="place">Türkiye</p>
-      <p class="fact">In an Istanbul taxi, the meter is required to go on the moment you get in — and drivers aren't allowed to pick and choose their passengers.</p>
-      <span class="tag">→ the one sentence that keeps it honest</span>
+      <p class="place" data-i18n="proof_tr_place">Türkiye</p>
+      <p class="fact" data-i18n="proof_tr_fact">In an Istanbul taxi, the meter is required to go on the moment you get in — and drivers aren't allowed to pick and choose their passengers.</p>
+      <span class="tag" data-i18n="proof_tr_tag">→ the one sentence that keeps it honest</span>
     </div>
   </div>
 
   <div class="compare">
     <div class="col them">
-      <h3>MOST LANGUAGE APPS</h3>
-      <p>Teach "Italian." One big generic language, the same 500 words for Rome, Milan, or a business trip to Zurich.</p>
+      <h3 data-i18n="compare_them_h">MOST LANGUAGE APPS</h3>
+      <p data-i18n="compare_them_p">Teach "Italian." One big generic language, the same 500 words for Rome, Milan, or a business trip to Zurich.</p>
     </div>
     <div class="col us">
-      <h3>KIT DE BORDO</h3>
-      <p>Teaches Italian <em>for Italy</em>, this year — with the prices, hours, and habits that are true right now, not folklore from a 1998 guidebook.</p>
+      <h3 data-i18n="compare_us_h">JOURNEYO</h3>
+      <p data-i18n="compare_us_p">Teaches Italian for Italy, this year — with the prices, hours, and habits that are true right now, not folklore from a 1998 guidebook.</p>
     </div>
   </div>
 </section>
 
 <section class="wrap">
-  <p class="section-kicker">How it works</p>
-  <h2>36 short lessons, in the order a trip actually happens.</h2>
-  <p class="section-lede">Not "Beginner / Intermediate / Advanced" — a shelf of grammar levels nobody asked for. Three real stages of being somewhere new.</p>
+  <p class="section-kicker" data-i18n="how_kicker">How it works</p>
+  <h2 data-i18n="how_h2">36 short lessons, in the order a trip actually happens.</h2>
+  <p class="section-lede" data-i18n="how_lede">Not "Beginner / Intermediate / Advanced" — a shelf of grammar levels nobody asked for. Three real stages of being somewhere new.</p>
   <div class="phase-grid">
     <div class="phase-card p1">
       <span class="emoji">🛬</span>
-      <span class="n">Stage 1</span>
-      <h3>Arrival</h3>
-      <p>Your first 24 hours — off the plane and settled in. Immigration, transport, check-in, the first hour at four different counters.</p>
+      <span class="n" data-i18n="phase1_n">Stage 1</span>
+      <h3 data-i18n="phase1_h">Arrival</h3>
+      <p data-i18n="phase1_p">Your first 24 hours — off the plane and settled in. Immigration, transport, check-in, the first hour at four different counters.</p>
     </div>
     <div class="phase-card p2">
       <span class="emoji">☀️</span>
-      <span class="n">Stage 2</span>
-      <h3>Everyday</h3>
-      <p>Eating, shopping, getting around, and sorting things out — like someone who's done this before, not someone reading a phrasebook.</p>
+      <span class="n" data-i18n="phase2_n">Stage 2</span>
+      <h3 data-i18n="phase2_h">Everyday</h3>
+      <p data-i18n="phase2_p">Eating, shopping, getting around, and sorting things out — like someone who's done this before, not someone reading a phrasebook.</p>
     </div>
     <div class="phase-card p3">
       <span class="emoji">🌙</span>
-      <span class="n">Stage 3</span>
-      <h3>Blending In</h3>
-      <p>Telling the story of your day, catching the local humor, being invited somewhere — not a lost tourist, someone who came to stay a while.</p>
+      <span class="n" data-i18n="phase3_n">Stage 3</span>
+      <h3 data-i18n="phase3_h">Blending In</h3>
+      <p data-i18n="phase3_p">Telling the story of your day, catching the local humor, being invited somewhere — not a lost tourist, someone who came to stay a while.</p>
     </div>
   </div>
 </section>
 
 <section class="wrap" id="destinos">
-  <p class="section-kicker">Pick your destination</p>
-  <h2>One course per destination, in your own language.</h2>
-  <p class="section-lede">Each card below is a live course. Pick your destination, then your own language — the course teaches the destination's language, guided in yours.</p>
+  <p class="section-kicker" data-i18n="dest_kicker">Pick your destination</p>
+  <h2 data-i18n="dest_h2">One course per destination, in your own language.</h2>
+  <p class="section-lede" data-i18n="dest_lede">Each language link opens straight into Lesson 1 — no signup, try it before you decide.</p>
 
-  <div class="dest-grid">
+  <div class="dest-grid" id="destGrid"></div>
+</section>
 
-    <div class="dest-card">
-      <div class="head"><span class="flag">🇵🇹</span><div><h3>Portugal</h3><div class="sub">7 buyer languages</div></div></div>
-      <div class="chips">
-        <a class="chip" href="https://aleapc.github.io/curso-portugal-en/">English</a>
-        <a class="chip" href="https://aleapc.github.io/curso-portugal-de/">German</a>
-        <a class="chip" href="https://aleapc.github.io/curso-portugal-fr/">French</a>
-        <a class="chip" href="https://aleapc.github.io/curso-portugal-it/">Italian</a>
-        <a class="chip" href="https://aleapc.github.io/curso-portugal-nl/">Dutch</a>
-        <a class="chip" href="https://aleapc.github.io/curso-portugal-es/">Spanish</a>
-        <a class="chip" href="https://aleapc.github.io/curso-portugal-zh/">Mandarin</a>
-        <a class="chip" href="https://aleapc.github.io/curso-portugal-ko/">Korean</a>
-      </div>
+<section class="wrap">
+  <p class="section-kicker" data-i18n="soon_kicker">Coming soon</p>
+  <h2 data-i18n="soon_h2">The map is still growing.</h2>
+  <div class="soon-strip">
+    <div class="soon-card">
+      <span class="flag">🇯🇵</span>
+      <h4 data-i18n="soon_jp_h">Japan</h4>
+      <p data-i18n="soon_jp_p">Content and audio are ready — the destination photography is still being produced.</p>
+      <span class="soon-badge" data-i18n="soon_badge">In progress</span>
     </div>
-
-    <div class="dest-card">
-      <div class="head"><span class="flag">🇮🇹</span><div><h3>Italy</h3><div class="sub">6 buyer languages</div></div></div>
-      <div class="chips">
-        <a class="chip" href="https://aleapc.github.io/curso-italia-en/">English</a>
-        <a class="chip" href="https://aleapc.github.io/curso-italia-de/">German</a>
-        <a class="chip" href="https://aleapc.github.io/curso-italia-es/">Spanish</a>
-        <a class="chip" href="https://aleapc.github.io/curso-italia-nl/">Dutch</a>
-        <a class="chip" href="https://aleapc.github.io/curso-italia-zh/">Mandarin</a>
-        <a class="chip" href="https://aleapc.github.io/curso-italia-ko/">Korean</a>
-      </div>
+    <div class="soon-card">
+      <span class="flag">🇧🇷</span>
+      <h4 data-i18n="soon_pt_h">Portuguese, as a buyer language</h4>
+      <p data-i18n="soon_pt_p">Right now every course guides in English, German, French, Italian, Dutch, Spanish, Mandarin, Korean or Russian — Portuguese-guided courses are next.</p>
+      <span class="soon-badge" data-i18n="soon_badge2">Planned</span>
     </div>
-
-    <div class="dest-card">
-      <div class="head"><span class="flag">🇩🇪</span><div><h3>Germany</h3><div class="sub">6 buyer languages</div></div></div>
-      <div class="chips">
-        <a class="chip" href="https://aleapc.github.io/curso-alemanha-en/">English</a>
-        <a class="chip" href="https://aleapc.github.io/curso-alemanha-es/">Spanish</a>
-        <a class="chip" href="https://aleapc.github.io/curso-alemanha-fr/">French</a>
-        <a class="chip" href="https://aleapc.github.io/curso-alemanha-it/">Italian</a>
-        <a class="chip" href="https://aleapc.github.io/curso-alemanha-nl/">Dutch</a>
-        <a class="chip" href="https://aleapc.github.io/curso-alemanha-zh/">Mandarin</a>
-      </div>
-    </div>
-
-    <div class="dest-card">
-      <div class="head"><span class="flag">🇪🇸</span><div><h3>Spain</h3><div class="sub">6 buyer languages</div></div></div>
-      <div class="chips">
-        <a class="chip" href="https://aleapc.github.io/curso-espanha/">English</a>
-        <a class="chip" href="https://aleapc.github.io/curso-espanha-de/">German</a>
-        <a class="chip" href="https://aleapc.github.io/curso-espanha-fr/">French</a>
-        <a class="chip" href="https://aleapc.github.io/curso-espanha-it/">Italian</a>
-        <a class="chip" href="https://aleapc.github.io/curso-espanha-nl/">Dutch</a>
-        <a class="chip" href="https://aleapc.github.io/curso-espanha-zh/">Mandarin</a>
-        <a class="chip" href="https://aleapc.github.io/curso-espanha-ko/">Korean</a>
-      </div>
-    </div>
-
-    <div class="dest-card">
-      <div class="head"><span class="flag">🇫🇷</span><div><h3>France</h3><div class="sub">5 buyer languages</div></div></div>
-      <div class="chips">
-        <a class="chip" href="https://aleapc.github.io/curso-franca-en/">English</a>
-        <a class="chip" href="https://aleapc.github.io/curso-franca-de/">German</a>
-        <a class="chip" href="https://aleapc.github.io/curso-franca-es/">Spanish</a>
-        <a class="chip" href="https://aleapc.github.io/curso-franca-nl/">Dutch</a>
-        <a class="chip" href="https://aleapc.github.io/curso-franca-zh/">Mandarin</a>
-      </div>
-    </div>
-
-    <div class="dest-card">
-      <div class="head"><span class="flag">🇹🇷</span><div><h3>Türkiye</h3><div class="sub">3 buyer languages</div></div></div>
-      <div class="chips">
-        <a class="chip" href="https://aleapc.github.io/curso-turquia-en/">English</a>
-        <a class="chip" href="https://aleapc.github.io/curso-turquia-de/">German</a>
-        <a class="chip" href="https://aleapc.github.io/curso-turquia-ru/">Russian</a>
-      </div>
-    </div>
-
-    <div class="dest-card">
-      <div class="head"><span class="flag">🇬🇷</span><div><h3>Greece</h3><div class="sub">3 buyer languages</div></div></div>
-      <div class="chips">
-        <a class="chip" href="https://aleapc.github.io/curso-grecia-en/">English</a>
-        <a class="chip" href="https://aleapc.github.io/curso-grecia-de/">German</a>
-        <a class="chip" href="https://aleapc.github.io/curso-grecia-nl/">Dutch</a>
-      </div>
-    </div>
-
-    <div class="dest-card">
-      <div class="head"><span class="flag">🇲🇽</span><div><h3>Mexico</h3><div class="sub">1 buyer language</div></div></div>
-      <div class="chips">
-        <a class="chip" href="https://aleapc.github.io/curso-mexico-en/">English</a>
-      </div>
-    </div>
-
-    <div class="dest-card">
-      <div class="head"><span class="flag">🇯🇵</span><div><h3>Japan</h3><div class="sub">coming soon</div></div></div>
-      <div class="chips">
-        <span class="chip soon">English</span>
-        <span class="chip soon">Mandarin</span>
-        <span class="chip soon">Korean</span>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <footer class="wrap">
-  <div class="promise">Not a subscription. Not gamified. Built destination by destination.</div>
-  <div>Kit de Bordo — one course per trip, not one course forever.</div>
+  <div class="promise" data-i18n="footer_promise">Not a subscription. Not gamified. Built destination by destination.</div>
+  <div data-i18n="footer_tag">Journeyo — one course per trip, not one course forever.</div>
 </footer>
+
+<script>
+const DESTS = [
+  { key: 'portugal', img: 'portugal.webp', flag: '🇵🇹', langs: ['en','de','fr','it','nl','es','zh','ko'] },
+  { key: 'italia',   img: 'italia.webp',   flag: '🇮🇹', langs: ['en','de','es','nl','zh','ko'] },
+  { key: 'alemanha', img: 'alemanha.webp', flag: '🇩🇪', langs: ['en','es','fr','it','nl','zh'] },
+  { key: 'espanha',  img: 'espanha.webp',  flag: '🇪🇸', langs: ['en','de','fr','it','nl','zh','ko'] },
+  { key: 'franca',   img: 'franca.webp',   flag: '🇫🇷', langs: ['en','de','es','nl','zh'] },
+  { key: 'turquia',  img: 'turquia.webp',  flag: '🇹🇷', langs: ['en','de','ru'] },
+  { key: 'grecia',   img: 'grecia.webp',   flag: '🇬🇷', langs: ['en','de','nl'] },
+  { key: 'mexico',   img: 'mexico.webp',   flag: '🇲🇽', langs: ['en'] }
+];
+
+// SKU pattern: curso-<destino>-<comprador> ; espanha's English buyer is the
+// bare "curso-espanha" AND still runs the old slot scheme (no b01), so it
+// links to the course home instead of a deep lesson link.
+const SKU_OVERRIDE = { 'espanha:en': 'curso-espanha' };
+const PATH_OVERRIDE = { 'espanha:en': '' };
+function courseUrl(destKey, lang) {
+  const sku = SKU_OVERRIDE[destKey + ':' + lang] || ('curso-' + destKey + '-' + lang);
+  const path = PATH_OVERRIDE[destKey + ':' + lang];
+  const suffix = path === undefined ? 'episodio/b01/' : path;
+  return 'https://aleapc.github.io/' + sku + '/' + suffix;
+}
+
+const DEST_NAMES = {
+  portugal: {en:'Portugal',de:'Portugal',fr:'Portugal',it:'Portogallo',nl:'Portugal',es:'Portugal',zh:'葡萄牙',ko:'포르투갈',ru:'Португалия',pt:'Portugal'},
+  italia:   {en:'Italy',de:'Italien',fr:'Italie',it:'Italia',nl:'Italië',es:'Italia',zh:'意大利',ko:'이탈리아',ru:'Италия',pt:'Itália'},
+  alemanha: {en:'Germany',de:'Deutschland',fr:'Allemagne',it:'Germania',nl:'Duitsland',es:'Alemania',zh:'德国',ko:'독일',ru:'Германия',pt:'Alemanha'},
+  espanha:  {en:'Spain',de:'Spanien',fr:'Espagne',it:'Spagna',nl:'Spanje',es:'España',zh:'西班牙',ko:'스페인',ru:'Испания',pt:'Espanha'},
+  franca:   {en:'France',de:'Frankreich',fr:'France',it:'Francia',nl:'Frankrijk',es:'Francia',zh:'法国',ko:'프랑스',ru:'Франция',pt:'França'},
+  grecia:   {en:'Greece',de:'Griechenland',fr:'Grèce',it:'Grecia',nl:'Griekenland',es:'Grecia',zh:'希腊',ko:'그리스',ru:'Греция',pt:'Grécia'},
+  turquia:  {en:'Türkiye',de:'Türkei',fr:'Turquie',it:'Turchia',nl:'Turkije',es:'Turquía',zh:'土耳其',ko:'튀르키예',ru:'Турция',pt:'Türkiye'},
+  mexico:   {en:'Mexico',de:'Mexiko',fr:'Mexique',it:'Messico',nl:'Mexico',es:'México',zh:'墨西哥',ko:'멕시코',ru:'Мексика',pt:'México'}
+};
+const DEST_DESC = {
+  portugal: {en:'Trams, pastéis de nata, and the bica you\'ll order every morning.',de:'Straßenbahnen, Pastéis de Nata und die Bica, die Sie jeden Morgen bestellen.',fr:'Tramways, pastéis de nata et la bica que vous commanderez chaque matin.',it:'Tram, pastéis de nata e la bica che ordinerai ogni mattina.',nl:'Trams, pastéis de nata en de bica die u elke ochtend zult bestellen.',es:'Tranvías, pastéis de nata y la bica que pedirás cada mañana.',zh:'电车、葡式蛋挞，以及你每天早上都会点的一杯 bica。',ko:'트램, 파스텔 드 나타, 그리고 매일 아침 주문하게 될 비카.',ru:'Трамваи, паштел де ната и бика, которую вы будете заказывать каждое утро.',pt:'Elétricos, pastéis de nata e a bica que vai pedir todas as manhãs.'},
+  italia: {en:'The coffee rule that doubles your bill, and the markets under old stone arches.',de:'Die Kaffeeregel, die Ihre Rechnung verdoppelt, und die Märkte unter alten Steinbögen.',fr:'La règle du café qui double l\'addition, et les marchés sous les vieilles arcades.',it:'La regola del caffè che raddoppia il conto, e i mercati sotto i vecchi portici.',nl:'De koffieregel die uw rekening verdubbelt, en de markten onder oude stenen bogen.',es:'La regla del café que duplica la cuenta, y los mercados bajo arcos de piedra.',zh:'让账单翻倍的咖啡规则，以及老石拱廊下的市场。',ko:'계산서를 두 배로 만드는 커피 규칙, 그리고 오래된 석조 아치 아래 시장.',ru:'Правило кофе, которое удваивает счёт, и рынки под старыми каменными арками.',pt:'A regra do café que dobra a conta, e os mercados sob arcos de pedra antigos.'},
+  alemanha: {en:'Deposit bottles, punctual trains, and the word that opens every counter.',de:'Pfandflaschen, pünktliche Züge und das Wort, das jeden Schalter öffnet.',fr:'Bouteilles consignées, trains ponctuels et le mot qui ouvre tous les guichets.',it:'Bottiglie con cauzione, treni puntuali e la parola che apre ogni sportello.',nl:'Statiegeldflessen, stipte treinen en het woord dat elk loket opent.',es:'Botellas con depósito, trenes puntuales y la palabra que abre cualquier mostrador.',zh:'押金瓶、准时的火车，以及能打开每个柜台的那个词。',ko:'보증금 병, 정시 기차, 그리고 모든 창구를 여는 그 한마디.',ru:'Бутылки с залогом, пунктуальные поезда и слово, которое открывает любой прилавок.',pt:'Garrafas com depósito, trens pontuais e a palavra que abre qualquer balcão.'},
+  espanha: {en:'Late dinners, the tapas rhythm, and how a peninsular accent actually sounds.',de:'Spätes Abendessen, der Tapas-Rhythmus, und wie ein Halbinsel-Akzent wirklich klingt.',fr:'Dîners tardifs, le rythme des tapas, et le vrai son d\'un accent péninsulaire.',it:'Cene tardive, il ritmo delle tapas, e come suona davvero un accento peninsulare.',nl:'Laat avondeten, het tapasritme, en hoe een schiereilandaccent echt klinkt.',es:'Cenas tardías, el ritmo de las tapas, y cómo suena de verdad el acento peninsular.',zh:'很晚才开始的晚餐、tapas 的节奏，以及真正的伊比利亚口音听起来是什么样。',ko:'늦은 저녁 식사, 타파스의 리듬, 그리고 진짜 이베리아 억양이 어떻게 들리는지.',ru:'Поздние ужины, ритм тапас и то, как на самом деле звучит полуостровный акцент.',pt:'Jantares tardios, o ritmo das tapas, e como soa de verdade um sotaque peninsular.'},
+  franca: {en:'The greeting that decides everything, and the bakery queue at 7am.',de:'Die Begrüßung, die alles entscheidet, und die Bäckereischlange um 7 Uhr.',fr:'La salutation qui décide de tout, et la file de la boulangerie à 7h.',it:'Il saluto che decide tutto, e la coda in panetteria alle 7 del mattino.',nl:'De begroeting die alles bepaalt, en de bakkersrij om 7 uur \'s ochtends.',es:'El saludo que lo decide todo, y la cola de la panadería a las 7 de la mañana.',zh:'决定一切的那句问候语，以及早上7点面包店门口的队伍。',ko:'모든 걸 좌우하는 인사말, 그리고 아침 7시 빵집 줄.',ru:'Приветствие, от которого всё зависит, и очередь в булочную в 7 утра.',pt:'O cumprimento que decide tudo, e a fila da padaria às 7 da manhã.'},
+  turquia: {en:'Tea offered everywhere, the taxi meter rule, and the call to prayer as a clock.',de:'Überall angebotener Tee, die Taxameter-Regel, und der Gebetsruf als Uhr.',fr:'Le thé offert partout, la règle du compteur de taxi, et l\'appel à la prière comme horloge.',it:'Il tè offerto ovunque, la regola del tassametro, e la chiamata alla preghiera come orologio.',nl:'Overal aangeboden thee, de taxameterregel, en de gebedsoproep als klok.',es:'El té que te ofrecen en todas partes, la regla del taxímetro, y la llamada a la oración como reloj.',zh:'到处都会请你喝的茶、出租车计价器的规则，以及作为报时的宣礼声。',ko:'어디서나 권하는 차, 택시 미터기 규칙, 그리고 시계 역할을 하는 아잔.',ru:'Чай, который предлагают повсюду, правило таксометра, и азан как часы.',pt:'O chá oferecido em todo o lado, a regra do taxímetro, e o chamado à oração como relógio.'},
+  grecia: {en:'Island ferries, the afternoon closing hours, and the toast that starts a night out.',de:'Inselfähren, die Nachmittags-Schließzeiten, und der Trinkspruch, der einen Abend eröffnet.',fr:'Ferries vers les îles, les heures de fermeture l\'après-midi, et le toast qui ouvre une soirée.',it:'Traghetti per le isole, gli orari di chiusura pomeridiani, e il brindisi che apre una serata.',nl:'Vef̈ren naar de eilanden, de sluitingstijden \'s middags, en de toost die een avond opent.',es:'Ferris a las islas, los horarios de cierre por la tarde, y el brindis que abre una noche.',zh:'开往岛屿的渡轮、下午的打烊时间，以及开启夜晚的那杯敬酒。',ko:'섬으로 가는 페리, 오후 휴식 시간, 그리고 밤을 여는 건배.',ru:'Паромы на острова, дневные часы закрытия и тост, с которого начинается вечер.',pt:'Ferries para as ilhas, os horários de fecho à tarde, e o brinde que abre uma noite.'},
+  mexico: {en:'Street-food etiquette, the right way to ask for spice, and market bargaining.',de:'Street-Food-Etikette, die richtige Art, nach Schärfe zu fragen, und Marktverhandlungen.',fr:'L\'étiquette de la street-food, la bonne façon de demander épicé, et le marchandage au marché.',it:'Il galateo dello street food, il modo giusto per chiedere piccante, e la contrattazione al mercato.',nl:'Street food-etiquette, de juiste manier om naar pittig te vragen, en afdingen op de markt.',es:'La etiqueta de la comida callejera, la forma correcta de pedir picante, y el regateo en el mercado.',zh:'街头小吃的礼节、正确要求辣度的方式，以及在市场里的讨价还价。',ko:'길거리 음식 예절, 매운맛을 제대로 요청하는 법, 그리고 시장에서의 흥정.',ru:'Этикет уличной еды, как правильно попросить остроту и торг на рынке.',pt:'A etiqueta da comida de rua, a forma certa de pedir picante, e o regatear no mercado.'}
+};
+const LANG_NAMES = {
+  en:{en:'English',de:'Englisch',fr:'Anglais',it:'Inglese',nl:'Engels',es:'Inglés',zh:'英语',ko:'영어',ru:'Английский',pt:'Inglês'},
+  de:{en:'German',de:'Deutsch',fr:'Allemand',it:'Tedesco',nl:'Duits',es:'Alemán',zh:'德语',ko:'독일어',ru:'Немецкий',pt:'Alemão'},
+  fr:{en:'French',de:'Französisch',fr:'Français',it:'Francese',nl:'Frans',es:'Francés',zh:'法语',ko:'프랑스어',ru:'Французский',pt:'Francês'},
+  it:{en:'Italian',de:'Italienisch',fr:'Italien',it:'Italiano',nl:'Italiaans',es:'Italiano',zh:'意大利语',ko:'이탈리아어',ru:'Итальянский',pt:'Italiano'},
+  nl:{en:'Dutch',de:'Niederländisch',fr:'Néerlandais',it:'Olandese',nl:'Nederlands',es:'Neerlandés',zh:'荷兰语',ko:'네덜란드어',ru:'Нидерландский',pt:'Neerlandês'},
+  es:{en:'Spanish',de:'Spanisch',fr:'Espagnol',it:'Spagnolo',nl:'Spaans',es:'Español',zh:'西班牙语',ko:'스페인어',ru:'Испанский',pt:'Espanhol'},
+  zh:{en:'Mandarin',de:'Mandarin',fr:'Mandarin',it:'Mandarino',nl:'Mandarijn',es:'Mandarín',zh:'普通话',ko:'중국어',ru:'Китайский',pt:'Mandarim'},
+  ko:{en:'Korean',de:'Koreanisch',fr:'Coréen',it:'Coreano',nl:'Koreaans',es:'Coreano',zh:'韩语',ko:'한국어',ru:'Корейский',pt:'Coreano'},
+  ru:{en:'Russian',de:'Russisch',fr:'Russe',it:'Russo',nl:'Russisch',es:'Ruso',zh:'俄语',ko:'러시아어',ru:'Русский',pt:'Russo'}
+};
+
+const SUPPORTED = ['en','de','fr','it','nl','es','zh','ko','ru','pt'];
+const LANG_LABEL_SELF = {en:'English',de:'Deutsch',fr:'Français',it:'Italiano',nl:'Nederlands',es:'Español',zh:'中文',ko:'한국어',ru:'Русский',pt:'Português'};
+
+const I18N = {
+en:{hero_h1:"The language of your trip,<br>in the order you'll actually need it.",hero_sub:"From the airport counter to the last toast of the night — a survival course built around one destination at a time, not a language in the abstract.",hero_cta:"See your destination ↓",hero_ctasub:"36 short lessons per destination · no subscription · works offline",proof_kicker:"Why not just Duolingo",proof_h2:"Every app teaches you to say hello.",proof_lede:"Almost none of them teach you the one thing that actually gets you into trouble: the local rule nobody explains until you've already broken it. Three real examples — the kind of thing this course teaches, not the kind we made up to sound clever.",proof_it_place:"Italy",proof_it_fact:"Bars are legally allowed to charge two different prices for the same coffee — one standing at the counter, one sitting at a table. The difference is often double.",proof_it_tag:"→ how to ask before you sit",proof_jp_place:"Japan",proof_jp_fact:"Tipping isn't just unnecessary in Japan — trying to leave one can confuse or mildly offend. Good service is already built into the price.",proof_jp_tag:"→ what to say instead of a tip",proof_tr_place:"Türkiye",proof_tr_fact:"In an Istanbul taxi, the meter is required to go on the moment you get in — and drivers aren't allowed to pick and choose their passengers.",proof_tr_tag:"→ the one sentence that keeps it honest",compare_them_h:"MOST LANGUAGE APPS",compare_them_p:'Teach "Italian." One big generic language, the same 500 words for Rome, Milan, or a business trip to Zurich.',compare_us_h:"JOURNEYO",compare_us_p:"Teaches Italian for Italy, this year — with the prices, hours, and habits that are true right now, not folklore from a 1998 guidebook.",how_kicker:"How it works",how_h2:"36 short lessons, in the order a trip actually happens.",how_lede:'Not "Beginner / Intermediate / Advanced" — a shelf of grammar levels nobody asked for. Three real stages of being somewhere new.',phase1_n:"Stage 1",phase1_h:"Arrival",phase1_p:"Your first 24 hours — off the plane and settled in. Immigration, transport, check-in, the first hour at four different counters.",phase2_n:"Stage 2",phase2_h:"Everyday",phase2_p:"Eating, shopping, getting around, and sorting things out — like someone who's done this before, not someone reading a phrasebook.",phase3_n:"Stage 3",phase3_h:"Blending In",phase3_p:"Telling the story of your day, catching the local humor, being invited somewhere — not a lost tourist, someone who came to stay a while.",dest_kicker:"Pick your destination",dest_h2:"One course per destination, in your own language.",dest_lede:"Each language link opens straight into Lesson 1 — no signup, try it before you decide.",soon_kicker:"Coming soon",soon_h2:"The map is still growing.",soon_jp_h:"Japan",soon_jp_p:"Content and audio are ready — the destination photography is still being produced.",soon_badge:"In progress",soon_pt_h:"Portuguese, as a buyer language",soon_pt_p:"Right now every course guides in English, German, French, Italian, Dutch, Spanish, Mandarin, Korean or Russian — Portuguese-guided courses are next.",soon_badge2:"Planned",footer_promise:"Not a subscription. Not gamified. Built destination by destination.",footer_tag:"Journeyo — one course per trip, not one course forever.",try_lesson:"Try Lesson 1 in:"},
+de:{hero_h1:"Die Sprache Ihrer Reise —<br>in der Reihenfolge, in der Sie sie wirklich brauchen.",hero_sub:"Vom Schalter am Flughafen bis zum letzten Toast des Abends — ein Überlebenskurs, gebaut um ein Reiseziel nach dem anderen, nicht um eine abstrakte Sprache.",hero_cta:"Zu Ihrem Reiseziel ↓",hero_ctasub:"36 kurze Lektionen pro Reiseziel · kein Abo · funktioniert offline",proof_kicker:"Warum nicht einfach Duolingo",proof_h2:"Jede App bringt Ihnen bei, Hallo zu sagen.",proof_lede:"Fast keine bringt Ihnen das eine bei, das wirklich Ärger macht: die Ortsregel, die niemand erklärt, bis Sie sie schon gebrochen haben. Drei echte Beispiele — das, was dieser Kurs lehrt, nicht das, was wir uns ausgedacht haben, um klug zu klingen.",proof_it_place:"Italien",proof_it_fact:"Bars dürfen für denselben Kaffee legal zwei verschiedene Preise verlangen — einer im Stehen an der Theke, einer am Tisch sitzend. Der Unterschied ist oft doppelt so hoch.",proof_it_tag:"→ wie man vorher fragt, bevor man sich setzt",proof_jp_place:"Japan",proof_jp_fact:"Trinkgeld ist in Japan nicht nur unnötig — der Versuch, welches zu geben, kann verwirren oder leicht beleidigen. Guter Service ist bereits im Preis enthalten.",proof_jp_tag:"→ was man statt Trinkgeld sagt",proof_tr_place:"Türkiye",proof_tr_fact:"In einem Istanbuler Taxi muss das Taxameter in dem Moment eingeschaltet werden, in dem Sie einsteigen — und Fahrer dürfen sich ihre Fahrgäste nicht aussuchen.",proof_tr_tag:"→ der eine Satz, der es ehrlich hält",compare_them_h:"DIE MEISTEN SPRACH-APPS",compare_them_p:'Lehren "Italienisch" — eine große, generische Sprache, dieselben 500 Wörter für Rom, Mailand oder eine Geschäftsreise nach Zürich.',compare_us_h:"JOURNEYO",compare_us_p:"Lehrt Italienisch für Italien, dieses Jahr — mit den Preisen, Öffnungszeiten und Gewohnheiten, die gerade jetzt wahr sind, nicht Folklore aus einem Reiseführer von 1998.",how_kicker:"So funktioniert's",how_h2:"36 kurze Lektionen, in der Reihenfolge, in der eine Reise wirklich passiert.",how_lede:'Nicht "Anfänger / Mittelstufe / Fortgeschritten" — ein Regal mit Grammatikstufen, die niemand wollte. Drei echte Phasen davon, irgendwo neu zu sein.',phase1_n:"Phase 1",phase1_h:"Ankunft",phase1_p:"Ihre ersten 24 Stunden — vom Flugzeug bis zum Einleben. Einreise, Transport, Check-in, die erste Stunde an vier verschiedenen Schaltern.",phase2_n:"Phase 2",phase2_h:"Alltag",phase2_p:"Essen, einkaufen, unterwegs sein und alles klären — wie jemand, der das schon kennt, nicht wie jemand mit einem Sprachführer.",phase3_n:"Phase 3",phase3_h:"Dazugehören",phase3_p:"Die Geschichte Ihres Tages erzählen, den lokalen Humor verstehen, irgendwohin eingeladen werden — kein verlorener Tourist, jemand, der geblieben ist.",dest_kicker:"Wählen Sie Ihr Reiseziel",dest_h2:"Ein Kurs pro Reiseziel, in Ihrer eigenen Sprache.",dest_lede:"Jeder Sprachlink öffnet direkt Lektion 1 — keine Anmeldung, probieren Sie es, bevor Sie sich entscheiden.",soon_kicker:"Demnächst",soon_h2:"Die Karte wächst noch.",soon_jp_h:"Japan",soon_jp_p:"Inhalt und Audio sind fertig — die Reisefotografie wird noch produziert.",soon_badge:"In Arbeit",soon_pt_h:"Portugiesisch als Käufersprache",soon_pt_p:"Momentan führt jeder Kurs auf Englisch, Deutsch, Französisch, Italienisch, Niederländisch, Spanisch, Mandarin, Koreanisch oder Russisch — auf Portugiesisch geführte Kurse kommen als Nächstes.",soon_badge2:"Geplant",footer_promise:"Kein Abo. Keine Gamification. Reiseziel für Reiseziel gebaut.",footer_tag:"Journeyo — ein Kurs pro Reise, nicht ein Kurs für immer.",try_lesson:"Lektion 1 probieren auf:"},
+fr:{hero_h1:"La langue de votre voyage,<br>dans l'ordre où vous en aurez vraiment besoin.",hero_sub:"Du comptoir de l'aéroport au dernier toast de la soirée — un cours de survie construit autour d'une destination à la fois, pas d'une langue abstraite.",hero_cta:"Voir votre destination ↓",hero_ctasub:"36 courtes leçons par destination · sans abonnement · fonctionne hors ligne",proof_kicker:"Pourquoi pas juste Duolingo",proof_h2:"Chaque appli vous apprend à dire bonjour.",proof_lede:"Presque aucune ne vous apprend la seule chose qui cause de vrais ennuis : la règle locale que personne n'explique avant que vous l'ayez déjà enfreinte. Trois exemples réels — ce que ce cours enseigne, pas ce qu'on a inventé pour faire bien.",proof_it_place:"Italie",proof_it_fact:"Les bars ont légalement le droit de facturer deux prix différents pour le même café — debout au comptoir, ou assis à table. La différence est souvent du double.",proof_it_tag:"→ comment demander avant de s'asseoir",proof_jp_place:"Japon",proof_jp_fact:"Le pourboire n'est pas seulement inutile au Japon — essayer d'en laisser un peut troubler ou vexer légèrement. Le bon service est déjà inclus dans le prix.",proof_jp_tag:"→ que dire à la place d'un pourboire",proof_tr_place:"Türkiye",proof_tr_fact:"Dans un taxi à Istanbul, le compteur doit être allumé dès que vous montez — et les chauffeurs n'ont pas le droit de choisir leurs passagers.",proof_tr_tag:"→ la phrase qui garde tout honnête",compare_them_h:"LA PLUPART DES APPLIS",compare_them_p:'Enseignent "l\'italien". Une grande langue générique, les mêmes 500 mots pour Rome, Milan, ou un voyage d\'affaires à Zurich.',compare_us_h:"JOURNEYO",compare_us_p:"Enseigne l'italien pour l'Italie, cette année — avec les prix, horaires et habitudes vrais maintenant, pas le folklore d'un guide de 1998.",how_kicker:"Comment ça marche",how_h2:"36 courtes leçons, dans l'ordre où un voyage se déroule vraiment.",how_lede:'Pas "Débutant / Intermédiaire / Avancé" — une étagère de niveaux de grammaire que personne n\'a demandés. Trois vraies étapes d\'être quelque part de nouveau.',phase1_n:"Étape 1",phase1_h:"Arrivée",phase1_p:"Vos premières 24 heures — de l'avion à l'installation. Immigration, transport, arrivée à l'hôtel, la première heure à quatre comptoirs différents.",phase2_n:"Étape 2",phase2_h:"Le quotidien",phase2_p:"Manger, faire les courses, se déplacer et régler les choses — comme quelqu'un qui connaît déjà, pas quelqu'un qui lit un guide de conversation.",phase3_n:"Étape 3",phase3_h:"S'intégrer",phase3_p:"Raconter votre journée, comprendre l'humour local, être invité quelque part — pas un touriste perdu, quelqu'un venu pour rester un moment.",dest_kicker:"Choisissez votre destination",dest_h2:"Un cours par destination, dans votre propre langue.",dest_lede:"Chaque lien de langue ouvre directement la Leçon 1 — sans inscription, essayez avant de décider.",soon_kicker:"Bientôt disponible",soon_h2:"La carte continue de s'agrandir.",soon_jp_h:"Japon",soon_jp_p:"Le contenu et l'audio sont prêts — les photos de la destination sont encore en cours de production.",soon_badge:"En cours",soon_pt_h:"Le portugais, comme langue de l'acheteur",soon_pt_p:"En ce moment chaque cours guide en anglais, allemand, français, italien, néerlandais, espagnol, mandarin, coréen ou russe — les cours guidés en portugais arrivent ensuite.",soon_badge2:"Prévu",footer_promise:"Pas d'abonnement. Pas de gamification. Construit destination par destination.",footer_tag:"Journeyo — un cours par voyage, pas un cours pour toujours.",try_lesson:"Essayer la Leçon 1 en :"},
+it:{hero_h1:"La lingua del tuo viaggio,<br>nell'ordine in cui ti servirà davvero.",hero_sub:"Dal banco dell'aeroporto all'ultimo brindisi della serata — un corso di sopravvivenza costruito una destinazione alla volta, non una lingua astratta.",hero_cta:"Vedi la tua destinazione ↓",hero_ctasub:"36 brevi lezioni per destinazione · nessun abbonamento · funziona offline",proof_kicker:"Perché non basta Duolingo",proof_h2:"Ogni app ti insegna a dire ciao.",proof_lede:"Quasi nessuna ti insegna l'unica cosa che ti mette davvero nei guai: la regola locale che nessuno spiega finché non l'hai già infranta. Tre esempi reali — quello che questo corso insegna, non quello che ci siamo inventati per sembrare furbi.",proof_it_place:"Italia",proof_it_fact:"I bar possono legalmente far pagare due prezzi diversi per lo stesso caffè — uno al banco, uno al tavolo. La differenza è spesso il doppio.",proof_it_tag:"→ come chiedere prima di sedersi",proof_jp_place:"Giappone",proof_jp_fact:"La mancia in Giappone non è solo superflua — provare a lasciarla può confondere o offendere lievemente. Il buon servizio è già incluso nel prezzo.",proof_jp_tag:"→ cosa dire al posto della mancia",proof_tr_place:"Türkiye",proof_tr_fact:"In un taxi a Istanbul il tassametro deve essere acceso nel momento in cui sali — e gli autisti non possono scegliere i passeggeri.",proof_tr_tag:"→ la frase che tiene tutto onesto",compare_them_h:"LA MAGGIOR PARTE DELLE APP",compare_them_p:'Insegnano "l\'italiano". Una grande lingua generica, le stesse 500 parole per Roma, Milano, o un viaggio di lavoro a Zurigo.',compare_us_h:"JOURNEYO",compare_us_p:"Insegna l'italiano per l'Italia, quest'anno — con i prezzi, gli orari e le abitudini vere adesso, non il folklore di una guida del 1998.",how_kicker:"Come funziona",how_h2:"36 brevi lezioni, nell'ordine in cui un viaggio accade davvero.",how_lede:'Non "Base / Intermedio / Avanzato" — uno scaffale di livelli di grammatica che nessuno ha chiesto. Tre fasi reali di trovarsi in un posto nuovo.',phase1_n:"Fase 1",phase1_h:"Arrivo",phase1_p:"Le tue prime 24 ore — dall'aereo alla sistemazione. Immigrazione, trasporti, check-in, la prima ora a quattro banchi diversi.",phase2_n:"Fase 2",phase2_h:"La vita di tutti i giorni",phase2_p:"Mangiare, fare acquisti, spostarsi e cavarsela — come chi lo conosce già, non chi legge un frasario.",phase3_n:"Fase 3",phase3_h:"Integrarsi",phase3_p:"Raccontare la tua giornata, cogliere l'umorismo locale, essere invitato da qualche parte — non un turista perso, qualcuno venuto per restare un po'.",dest_kicker:"Scegli la tua destinazione",dest_h2:"Un corso per destinazione, nella tua lingua.",dest_lede:"Ogni link di lingua apre direttamente la Lezione 1 — senza registrazione, provalo prima di decidere.",soon_kicker:"Prossimamente",soon_h2:"La mappa sta ancora crescendo.",soon_jp_h:"Giappone",soon_jp_p:"Contenuti e audio sono pronti — le foto della destinazione sono ancora in produzione.",soon_badge:"In corso",soon_pt_h:"Il portoghese, come lingua dell'acquirente",soon_pt_p:"Al momento ogni corso guida in inglese, tedesco, francese, italiano, olandese, spagnolo, mandarino, coreano o russo — i corsi guidati in portoghese sono i prossimi.",soon_badge2:"Pianificato",footer_promise:"Nessun abbonamento. Nessuna gamification. Costruito destinazione per destinazione.",footer_tag:"Journeyo — un corso per viaggio, non un corso per sempre.",try_lesson:"Prova la Lezione 1 in:"},
+nl:{hero_h1:"De taal van uw reis,<br>in de volgorde waarin u ze echt nodig heeft.",hero_sub:"Van de balie op de luchthaven tot de laatste toost van de avond — een overlevingscursus gebouwd rond één bestemming tegelijk, niet een taal in het abstract.",hero_cta:"Bekijk uw bestemming ↓",hero_ctasub:"36 korte lessen per bestemming · geen abonnement · werkt offline",proof_kicker:"Waarom niet gewoon Duolingo",proof_h2:"Elke app leert u hallo zeggen.",proof_lede:"Bijna geen enkele leert u het ene dat u echt in de problemen brengt: de plaatselijke regel die niemand uitlegt totdat u hem al heeft overtreden. Drie echte voorbeelden — het soort dat deze cursus leert, niet het soort dat we hebben verzonnen om slim te klinken.",proof_it_place:"Italië",proof_it_fact:"Bars mogen wettelijk twee verschillende prijzen rekenen voor dezelfde koffie — staand aan de bar, of zittend aan tafel. Het verschil is vaak dubbel.",proof_it_tag:"→ hoe te vragen voordat u gaat zitten",proof_jp_place:"Japan",proof_jp_fact:"Fooien geven is in Japan niet alleen onnodig — proberen een fooi te geven kan verwarring of milde belediging veroorzaken. Goede service zit al in de prijs.",proof_jp_tag:"→ wat te zeggen in plaats van een fooi",proof_tr_place:"Türkiye",proof_tr_fact:"In een taxi in Istanbul moet de meter aan zodra u instapt — en chauffeurs mogen hun passagiers niet zelf kiezen.",proof_tr_tag:"→ de ene zin die het eerlijk houdt",compare_them_h:"DE MEESTE TAAL-APPS",compare_them_p:'Leren "Italiaans". Eén grote generieke taal, dezelfde 500 woorden voor Rome, Milaan, of een zakenreis naar Zürich.',compare_us_h:"JOURNEYO",compare_us_p:"Leert Italiaans voor Italië, dit jaar — met de prijzen, openingstijden en gewoontes die nu waar zijn, geen folklore uit een reisgids van 1998.",how_kicker:"Hoe het werkt",how_h2:"36 korte lessen, in de volgorde waarin een reis echt verloopt.",how_lede:'Niet "Beginner / Gemiddeld / Gevorderd" — een plank vol grammaticaniveaus die niemand vroeg. Drie echte fasen van ergens nieuw zijn.',phase1_n:"Fase 1",phase1_h:"Aankomst",phase1_p:"Uw eerste 24 uur — van het vliegtuig tot u zich thuis voelt. Immigratie, vervoer, inchecken, het eerste uur bij vier verschillende balies.",phase2_n:"Fase 2",phase2_h:"Dagelijks leven",phase2_p:"Eten, winkelen, je verplaatsen en dingen regelen — als iemand die dit al kent, niet iemand met een taalgids.",phase3_n:"Fase 3",phase3_h:"Erbij horen",phase3_p:"Het verhaal van uw dag vertellen, de lokale humor begrijpen, ergens worden uitgenodigd — geen verdwaalde toerist, iemand die is gekomen om te blijven.",dest_kicker:"Kies uw bestemming",dest_h2:"Eén cursus per bestemming, in uw eigen taal.",dest_lede:"Elke taallink opent direct Les 1 — geen aanmelding nodig, probeer het voordat u beslist.",soon_kicker:"Binnenkort",soon_h2:"De kaart groeit nog.",soon_jp_h:"Japan",soon_jp_p:"Inhoud en audio zijn klaar — de bestemmingsfotografie wordt nog geproduceerd.",soon_badge:"In uitvoering",soon_pt_h:"Portugees, als taal van de koper",soon_pt_p:"Op dit moment begeleidt elke cursus in het Engels, Duits, Frans, Italiaans, Nederlands, Spaans, Mandarijn, Koreaans of Russisch — Portugees-begeleide cursussen komen als volgende.",soon_badge2:"Gepland",footer_promise:"Geen abonnement. Geen gamification. Bestemming voor bestemming gebouwd.",footer_tag:"Journeyo — één cursus per reis, niet één cursus voor altijd.",try_lesson:"Probeer Les 1 in:"},
+es:{hero_h1:"El idioma de tu viaje,<br>en el orden en que realmente lo vas a necesitar.",hero_sub:"Del mostrador del aeropuerto al último brindis de la noche — un curso de supervivencia construido en torno a un destino a la vez, no a un idioma en abstracto.",hero_cta:"Ver tu destino ↓",hero_ctasub:"36 lecciones cortas por destino · sin suscripción · funciona sin conexión",proof_kicker:"Por qué no simplemente Duolingo",proof_h2:"Todas las apps te enseñan a decir hola.",proof_lede:"Casi ninguna te enseña lo único que realmente te mete en problemas: la norma local que nadie explica hasta que ya la rompiste. Tres ejemplos reales — lo que este curso enseña, no lo que inventamos para sonar ingeniosos.",proof_it_place:"Italia",proof_it_fact:"Los bares pueden cobrar legalmente dos precios distintos por el mismo café — de pie en la barra, o sentado en la mesa. La diferencia suele ser el doble.",proof_it_tag:"→ cómo preguntar antes de sentarte",proof_jp_place:"Japón",proof_jp_fact:"Dar propina en Japón no solo es innecesario — intentar dejarla puede confundir u ofender levemente. El buen servicio ya está incluido en el precio.",proof_jp_tag:"→ qué decir en lugar de una propina",proof_tr_place:"Türkiye",proof_tr_fact:"En un taxi de Estambul el taxímetro debe encenderse en el momento en que subes — y los conductores no pueden elegir a sus pasajeros.",proof_tr_tag:"→ la frase que mantiene todo honesto",compare_them_h:"LA MAYORÍA DE LAS APPS",compare_them_p:'Enseñan "italiano". Un idioma genérico enorme, las mismas 500 palabras para Roma, Milán, o un viaje de negocios a Zúrich.',compare_us_h:"JOURNEYO",compare_us_p:"Enseña italiano para Italia, este año — con los precios, horarios y costumbres que son ciertos ahora mismo, no folclore de una guía de 1998.",how_kicker:"Cómo funciona",how_h2:"36 lecciones cortas, en el orden en que un viaje realmente ocurre.",how_lede:'No "Básico / Intermedio / Avanzado" — un estante de niveles de gramática que nadie pidió. Tres etapas reales de estar en un lugar nuevo.',phase1_n:"Etapa 1",phase1_h:"Llegada",phase1_p:"Tus primeras 24 horas — del avión a instalarte. Inmigración, transporte, check-in, la primera hora en cuatro mostradores distintos.",phase2_n:"Etapa 2",phase2_h:"El día a día",phase2_p:"Comer, comprar, moverte y resolver cosas — como quien ya conoce esto, no quien lee una guía de frases.",phase3_n:"Etapa 3",phase3_h:"Integrándote",phase3_p:"Contar tu día, entender el humor local, ser invitado a algún lugar — no un turista perdido, alguien que vino para quedarse un rato.",dest_kicker:"Elige tu destino",dest_h2:"Un curso por destino, en tu propio idioma.",dest_lede:"Cada enlace de idioma abre directamente la Lección 1 — sin registro, pruébalo antes de decidir.",soon_kicker:"Próximamente",soon_h2:"El mapa sigue creciendo.",soon_jp_h:"Japón",soon_jp_p:"El contenido y el audio están listos — las fotos del destino aún se están produciendo.",soon_badge:"En proceso",soon_pt_h:"Portugués, como idioma del comprador",soon_pt_p:"Ahora mismo cada curso guía en inglés, alemán, francés, italiano, neerlandés, español, mandarín, coreano o ruso — los cursos guiados en portugués son los siguientes.",soon_badge2:"Planeado",footer_promise:"No es una suscripción. No es gamificado. Construido destino por destino.",footer_tag:"Journeyo — un curso por viaje, no un curso para siempre.",try_lesson:"Prueba la Lección 1 en:"},
+zh:{hero_h1:"你旅行需要的语言，<br>按你真正会用到的顺序排列。",hero_sub:"从机场柜台到当晚最后一次干杯——这是围绕单一目的地打造的生存课程，而不是一门抽象的语言。",hero_cta:"查看你的目的地 ↓",hero_ctasub:"每个目的地36节短课·无需订阅·可离线使用",proof_kicker:"为什么不直接用多邻国",proof_h2:"每个App都教你说你好。",proof_lede:"几乎没有一个App会教你真正让你陷入麻烦的那件事：没人会提前解释的当地规矩，直到你已经犯了错。三个真实的例子——这门课真正会教的东西，不是我们编出来显得聪明的例子。",proof_it_place:"意大利",proof_it_fact:"酒吧合法地对同一杯咖啡收取两种不同的价格——站在吧台喝一个价，坐在桌边喝又是一个价，差价常常是两倍。",proof_it_tag:"→ 坐下前该怎么问",proof_jp_place:"日本",proof_jp_fact:"在日本，小费不仅没有必要——试图给小费还可能让人困惑甚至略感冒犯。优质服务本身就已经包含在价格里了。",proof_jp_tag:"→ 该说什么来代替给小费",proof_tr_place:"土耳其",proof_tr_fact:"在伊斯坦布尔的出租车上，计价器必须在你上车那一刻打开——司机也不能挑选乘客。",proof_tr_tag:"→ 一句话让一切保持诚实",compare_them_h:"大多数语言App",compare_them_p:"教你「意大利语」——一门笼统的语言，去罗马、米兰，还是去苏黎世出差，都是同样的那500个单词。",compare_us_h:"JOURNEYO",compare_us_p:"教的是今年、专为意大利准备的意大利语——用现在真实的价格、营业时间和习惯，而不是1998年旅行指南里的传说。",how_kicker:"课程是怎么安排的",how_h2:"36节短课，按一次旅行真正展开的顺序排列。",how_lede:"不是「初级／中级／高级」——没人要的一排语法难度架子。而是身处一个新地方的三个真实阶段。",phase1_n:"第一阶段",phase1_h:"抵达",phase1_p:"落地后的头24小时——从飞机到安顿下来。入境、交通、办理入住，以及在四个不同柜台度过的第一个小时。",phase2_n:"第二阶段",phase2_h:"日常生活",phase2_p:"吃饭、购物、出行、解决问题——像一个早就熟悉这里的人，而不是拿着短语手册的人。",phase3_n:"第三阶段",phase3_h:"融入当地",phase3_p:"讲述你这一天的故事，get到当地人的幽默，被邀请去做客——不是迷路的游客，而是打算留下来体验的人。",dest_kicker:"选择你的目的地",dest_h2:"每个目的地一门课，用你自己的语言讲解。",dest_lede:"每个语言链接会直接打开第一课——无需注册，先试试再决定。",soon_kicker:"即将上线",soon_h2:"地图还在扩展。",soon_jp_h:"日本",soon_jp_p:"内容和音频已经就绪——目的地的实景照片仍在制作中。",soon_badge:"制作中",soon_pt_h:"葡萄牙语，作为购买者语言",soon_pt_p:"目前每门课的讲解语言是英语、德语、法语、意大利语、荷兰语、西班牙语、普通话、韩语或俄语——葡萄牙语讲解的课程是下一步。",soon_badge2:"计划中",footer_promise:"不是订阅制，不做游戏化，一个目的地一个目的地地打造。",footer_tag:"Journeyo——每趟旅行一门课，而不是一门课用一辈子。",try_lesson:"用以下语言试听第一课："},
+ko:{hero_h1:"여행에 필요한 언어를,<br>실제로 필요한 순서 그대로.",hero_sub:"공항 카운터부터 그날 밤 마지막 건배까지 — 추상적인 언어가 아니라 한 번에 하나의 목적지를 중심으로 만든 생존 코스입니다.",hero_cta:"내 목적지 보기 ↓",hero_ctasub:"목적지별 36개의 짧은 레슨 · 구독 없음 · 오프라인 사용 가능",proof_kicker:"왜 그냥 듀오링고가 아닌가",proof_h2:"모든 앱이 인사말은 가르쳐줍니다.",proof_lede:"하지만 진짜 곤란해지는 그 한 가지 — 이미 어겨버릴 때까지 아무도 설명해주지 않는 현지 규칙 — 은 거의 가르쳐주지 않습니다. 세 가지 실제 사례입니다. 그럴듯하게 들리려고 지어낸 게 아니라, 이 코스가 실제로 가르치는 내용입니다.",proof_it_place:"이탈리아",proof_it_fact:"바(bar)는 같은 커피에 대해 법적으로 두 가지 다른 가격을 받을 수 있습니다 — 카운터에 서서 마시는 값과 테이블에 앉아 마시는 값. 그 차이는 종종 두 배에 달합니다.",proof_it_tag:"→ 앉기 전에 물어보는 법",proof_jp_place:"일본",proof_jp_fact:"일본에서는 팁이 불필요할 뿐만 아니라, 주려고 시도하면 당황하게 만들거나 살짝 실례가 될 수 있습니다. 좋은 서비스는 이미 가격에 포함되어 있습니다.",proof_jp_tag:"→ 팁 대신 할 수 있는 말",proof_tr_place:"튀르키예",proof_tr_fact:"이스탄불 택시에서는 타는 순간 미터기를 켜야 하며, 기사가 승객을 골라 태울 수 없습니다.",proof_tr_tag:"→ 모든 걸 정직하게 지켜주는 한마디",compare_them_h:"대부분의 언어 앱",compare_them_p:'"이탈리아어"를 가르칩니다. 로마든, 밀라노든, 취리히 출장이든 똑같은 500개 단어로 된 크고 일반적인 언어입니다.',compare_us_h:"JOURNEYO",compare_us_p:"올해, 이탈리아를 위한 이탈리아어를 가르칩니다 — 1998년 여행 가이드북의 옛이야기가 아니라 지금 실제로 통용되는 가격, 영업시간, 습관으로요.",how_kicker:"이렇게 작동합니다",how_h2:"36개의 짧은 레슨을, 여행이 실제로 펼쳐지는 순서 그대로.",how_lede:'"초급/중급/고급"이 아닙니다 — 아무도 원하지 않은 문법 난이도 선반이죠. 새로운 곳에 있는 것의 세 가지 진짜 단계입니다.',phase1_n:"1단계",phase1_h:"도착",phase1_p:"첫 24시간 — 비행기에서 내려 자리 잡기까지. 입국 심사, 교통, 체크인, 그리고 네 개의 서로 다른 카운터에서 보내는 첫 시간.",phase2_n:"2단계",phase2_h:"일상",phase2_p:"먹고, 사고, 이동하고, 문제를 해결하는 것 — 회화집을 읽는 사람이 아니라 이미 익숙한 사람처럼.",phase3_n:"3단계",phase3_h:"현지에 스며들기",phase3_p:"하루 있었던 일을 이야기하고, 현지 유머를 이해하고, 어딘가에 초대받는 것 — 길 잃은 관광객이 아니라 잠시 머물러 온 사람처럼.",dest_kicker:"목적지를 선택하세요",dest_h2:"목적지마다 하나의 코스를, 당신의 언어로.",dest_lede:"각 언어 링크는 바로 1강으로 연결됩니다 — 가입 없이, 결정하기 전에 먼저 체험해보세요.",soon_kicker:"곧 공개",soon_h2:"지도는 아직 확장 중입니다.",soon_jp_h:"일본",soon_jp_p:"콘텐츠와 오디오는 준비되었습니다 — 목적지 사진은 아직 제작 중입니다.",soon_badge:"진행 중",soon_pt_h:"구매자 언어로서의 포르투갈어",soon_pt_p:"현재 모든 코스는 영어, 독일어, 프랑스어, 이탈리아어, 네덜란드어, 스페인어, 중국어, 한국어 또는 러시아어로 안내됩니다 — 포르투갈어로 안내되는 코스가 다음 차례입니다.",soon_badge2:"계획 중",footer_promise:"구독이 아닙니다. 게임화하지 않습니다. 목적지별로 하나씩 만들어집니다.",footer_tag:"Journeyo — 평생 쓰는 코스가 아니라, 여행마다 쓰는 코스.",try_lesson:"다음 언어로 1강 체험하기:"},
+ru:{hero_h1:"Язык вашей поездки —<br>в том порядке, в котором он вам правда понадобится.",hero_sub:"От стойки в аэропорту до последнего тоста вечером — курс выживания, построенный вокруг одного направления за раз, а не абстрактного языка.",hero_cta:"Посмотреть моё направление ↓",hero_ctasub:"36 коротких уроков на направление · без подписки · работает офлайн",proof_kicker:"Почему не просто Duolingo",proof_h2:"Любое приложение научит вас говорить «привет».",proof_lede:"Почти ни одно не научит вас тому единственному, что реально доставляет проблемы: местному правилу, которое никто не объясняет, пока вы его уже не нарушили. Три реальных примера — то, чему учит этот курс, а не то, что мы придумали, чтобы звучать умно.",proof_it_place:"Италия",proof_it_fact:"Бары имеют законное право брать две разные цены за один и тот же кофе — стоя у стойки или сидя за столиком. Разница часто в два раза.",proof_it_tag:"→ как спросить прежде чем сесть",proof_jp_place:"Япония",proof_jp_fact:"Чаевые в Японии не просто не нужны — попытка их оставить может смутить или слегка обидеть. Хороший сервис уже включён в цену.",proof_jp_tag:"→ что сказать вместо чаевых",proof_tr_place:"Türkiye",proof_tr_fact:"В стамбульском такси счётчик обязаны включить в момент, когда вы садитесь, а водители не имеют права выбирать пассажиров.",proof_tr_tag:"→ фраза, которая держит всё честно",compare_them_h:"БОЛЬШИНСТВО ЯЗЫКОВЫХ ПРИЛОЖЕНИЙ",compare_them_p:"Учат «итальянскому» — один большой обобщённый язык, одни и те же 500 слов что для Рима, что для Милана, что для командировки в Цюрих.",compare_us_h:"JOURNEYO",compare_us_p:"Учит итальянскому для Италии, в этом году — с ценами, часами работы и привычками, актуальными прямо сейчас, а не фольклором из путеводителя 1998 года.",how_kicker:"Как это работает",how_h2:"36 коротких уроков, в том порядке, в котором поездка происходит на самом деле.",how_lede:"Не «Начальный / Средний / Продвинутый» — полка грамматических уровней, которую никто не просил. Три реальных этапа пребывания в новом месте.",phase1_n:"Этап 1",phase1_h:"Прибытие",phase1_p:"Ваши первые 24 часа — от самолёта до размещения. Паспортный контроль, транспорт, заселение, первый час у четырёх разных стоек.",phase2_n:"Этап 2",phase2_h:"Повседневная жизнь",phase2_p:"Еда, покупки, перемещения и решение вопросов — как человек, который уже здесь бывал, а не читает разговорник.",phase3_n:"Этап 3",phase3_h:"Вливаясь в местную жизнь",phase3_p:"Рассказать историю своего дня, понимать местный юмор, быть куда-то приглашённым — не потерянный турист, а тот, кто приехал, чтобы задержаться.",dest_kicker:"Выберите направление",dest_h2:"Один курс на направление, на вашем языке.",dest_lede:"Каждая языковая ссылка открывает сразу Урок 1 — без регистрации, попробуйте прежде чем решить.",soon_kicker:"Скоро",soon_h2:"Карта всё ещё растёт.",soon_jp_h:"Япония",soon_jp_p:"Контент и аудио готовы — фотографии направления ещё в процессе создания.",soon_badge:"В процессе",soon_pt_h:"Португальский как язык покупателя",soon_pt_p:"Сейчас каждый курс ведётся на английском, немецком, французском, итальянском, нидерландском, испанском, китайском, корейском или русском — курсы на португальском следующие в очереди.",soon_badge2:"Запланировано",footer_promise:"Не подписка. Без геймификации. Строится направление за направлением.",footer_tag:"Journeyo — один курс на поездку, а не один курс навсегда.",try_lesson:"Попробовать Урок 1 на:"},
+pt:{hero_h1:"O idioma da sua viagem,<br>na ordem em que você realmente vai precisar dele.",hero_sub:"Do balcão do aeroporto ao último brinde da noite — um curso de sobrevivência construído em torno de um destino de cada vez, não de um idioma no abstrato.",hero_cta:"Ver o seu destino ↓",hero_ctasub:"36 lições curtas por destino · sem assinatura · funciona offline",proof_kicker:"Por que não simplesmente o Duolingo",proof_h2:"Todo app ensina a dizer olá.",proof_lede:"Quase nenhum ensina a única coisa que realmente te coloca em apuros: a regra local que ninguém explica até você já ter quebrado. Três exemplos reais — o tipo de coisa que este curso ensina, não o tipo que inventamos pra soar esperto.",proof_it_place:"Itália",proof_it_fact:"Os bares podem legalmente cobrar dois preços diferentes pelo mesmo café — em pé no balcão, ou sentado à mesa. A diferença costuma ser o dobro.",proof_it_tag:"→ como perguntar antes de sentar",proof_jp_place:"Japão",proof_jp_fact:"Gorjeta no Japão não é só desnecessária — tentar dar uma pode confundir ou ofender levemente. O bom atendimento já está embutido no preço.",proof_jp_tag:"→ o que dizer em vez de dar gorjeta",proof_tr_place:"Türkiye",proof_tr_fact:"Num táxi em Istambul, o taxímetro precisa ser ligado no momento em que você entra — e os motoristas não podem escolher os passageiros.",proof_tr_tag:"→ a frase que mantém tudo honesto",compare_them_h:"A MAIORIA DOS APPS DE IDIOMA",compare_them_p:'Ensinam "italiano". Um idioma genérico só, as mesmas 500 palavras pra Roma, Milão, ou uma viagem de negócios a Zurique.',compare_us_h:"JOURNEYO",compare_us_p:"Ensina italiano para a Itália, deste ano — com os preços, horários e hábitos que são verdade agora, não folclore de um guia de 1998.",how_kicker:"Como funciona",how_h2:"36 lições curtas, na ordem em que uma viagem realmente acontece.",how_lede:'Não é "Básico / Intermediário / Avançado" — uma prateleira de níveis de gramática que ninguém pediu. Três fases reais de estar em um lugar novo.',phase1_n:"Fase 1",phase1_h:"Chegada",phase1_p:"Suas primeiras 24 horas — do avião a se instalar. Imigração, transporte, check-in, a primeira hora em quatro balcões diferentes.",phase2_n:"Fase 2",phase2_h:"Dia a dia",phase2_p:"Comer, comprar, se mover e resolver as coisas — como quem já conhece isso, não quem está lendo um guia de conversação.",phase3_n:"Fase 3",phase3_h:"Se integrando",phase3_p:"Contar a história do seu dia, entender o humor local, ser convidado para algum lugar — não um turista perdido, alguém que veio para ficar um tempo.",dest_kicker:"Escolha o seu destino",dest_h2:"Um curso por destino, no seu próprio idioma.",dest_lede:"Cada link de idioma abre direto na Lição 1 — sem cadastro, experimente antes de decidir.",soon_kicker:"Em breve",soon_h2:"O mapa ainda está crescendo.",soon_jp_h:"Japão",soon_jp_p:"Conteúdo e áudio já estão prontos — as fotos do destino ainda estão sendo produzidas.",soon_badge:"Em andamento",soon_pt_h:"Português, como idioma de comprador",soon_pt_p:"Hoje todo curso guia em inglês, alemão, francês, italiano, neerlandês, espanhol, mandarim, coreano ou russo — cursos guiados em português são o próximo passo.",soon_badge2:"Planejado",footer_promise:"Não é assinatura. Não é gamificado. Construído destino por destino.",footer_tag:"Journeyo — um curso por viagem, não um curso pra sempre.",try_lesson:"Experimente a Lição 1 em:"}
+};
+
+function applyLang(lang) {
+  if (!I18N[lang]) lang = 'en';
+  document.documentElement.lang = lang;
+  const dict = I18N[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) el.innerHTML = dict[key];
+  });
+  renderDestGrid(lang);
+  localStorage.setItem('journeyo_lang', lang);
+  const sel = document.getElementById('langSwitch');
+  if (sel) sel.value = lang;
+}
+
+function renderDestGrid(lang) {
+  const grid = document.getElementById('destGrid');
+  grid.innerHTML = DESTS.map(d => {
+    const name = (DEST_NAMES[d.key] && DEST_NAMES[d.key][lang]) || d.key;
+    const desc = (DEST_DESC[d.key] && DEST_DESC[d.key][lang]) || '';
+    const chips = d.langs.map(l => {
+      const label = (LANG_NAMES[l] && LANG_NAMES[l][lang]) || l;
+      return `<a class="chip" href="${courseUrl(d.key, l)}">${label}</a>`;
+    }).join('');
+    const tryLabel = (I18N[lang] && I18N[lang].try_lesson) || 'Try Lesson 1 in:';
+    return `<div class="dest-card">
+      <div class="dest-photo" style="background-image:url('img/${d.img}')">
+        <span class="flag">${d.flag}</span>
+        <span class="name">${name}</span>
+      </div>
+      <div class="dest-body">
+        <p class="dest-desc">${desc}</p>
+        <p class="try-hint">${tryLabel}</p>
+        <div class="chips">${chips}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+(function init() {
+  const sel = document.getElementById('langSwitch');
+  sel.innerHTML = SUPPORTED.map(l => `<option value="${l}">${LANG_LABEL_SELF[l]}</option>`).join('');
+  sel.addEventListener('change', e => applyLang(e.target.value));
+
+  const saved = localStorage.getItem('journeyo_lang');
+  const detected = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  const initial = saved || (SUPPORTED.includes(detected) ? detected : 'en');
+  applyLang(initial);
+})();
+</script>
 
 </body>
 </html>
